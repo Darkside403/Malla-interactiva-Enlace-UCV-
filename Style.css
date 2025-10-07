@@ -18,6 +18,13 @@ h1 {
   color: #FFD700;
 }
 
+.seccion {
+  background-color: #f0f8ff;
+  padding: 10px;
+  margin-top: 30px;
+  border-left: 5px solid #0074D9;
+}
+
 .barra-creditos {
   background-color: #0074D9;
   color: white;
@@ -28,7 +35,7 @@ h1 {
   border-radius: 8px;
 }
 
-#malla {
+main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 15px;
