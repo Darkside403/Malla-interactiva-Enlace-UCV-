@@ -4,75 +4,19 @@
   <meta charset="UTF-8">
   <title>Pensum Interactivo - Administración y Contaduría</title>
   <style>
-    body {
-      background-color: white;
-      font-family: Arial, sans-serif;
-      color: #0074D9;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px;
-    }
-
-    header img {
-      height: 80px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      color: #FFD700;
-      margin: 0;
-    }
-
-    .seccion {
-      background-color: #f0f8ff;
-      padding: 10px;
-      margin-top: 30px;
-      border-left: 5px solid #0074D9;
-    }
-
-    .materia {
-      border: 2px solid #0074D9;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 8px;
-      background-color: #ffffff;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .materia-info {
-      flex-grow: 1;
-    }
-
-    .semestre {
-      margin-bottom: 20px;
-    }
-
-    .semestre h3 {
-      margin: 10px 0;
-      color: #0074D9;
-    }
-
-    .barra-creditos {
-      background-color: #0074D9;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      font-weight: bold;
-      margin: 10px;
-      border-radius: 8px;
-    }
+    body { font-family: Arial; margin: 0; padding: 0; background: #fff; color: #0074D9; }
+    header { text-align: center; padding: 20px; }
+    h1 { color: #FFD700; margin: 0; }
+    .seccion { background: #f0f8ff; padding: 10px; margin-top: 30px; border-left: 5px solid #0074D9; }
+    .materia { border: 2px solid #0074D9; padding: 10px; margin: 10px; border-radius: 8px; background: #fff; display: flex; justify-content: space-between; align-items: center; }
+    .materia-info { flex-grow: 1; }
+    .semestre { margin-bottom: 20px; }
+    .semestre h3 { margin: 10px 0; color: #0074D9; }
+    .barra-creditos { background: #0074D9; color: white; padding: 10px; text-align: center; font-weight: bold; margin: 10px; border-radius: 8px; }
   </style>
 </head>
 <body>
   <header>
-    <img src="IMG-20250817-WA0027.png" alt="Logo Enlace UCV">
     <h1>Pensum Interactivo - Administración y Contaduría</h1>
   </header>
 
@@ -90,104 +34,12 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const materias = [
-         🟦 CICLO BÁSICO
-{ nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
-{ nombre: "Técnicas de Investigación y Documentación", código: "5371", créditos: 2, semestre: 1, tipo: "ciclo", prelación: [] },
-{ nombre: "Teoría Económica I", código: "5421", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
-{ nombre: "Historia Económica General", código: "5441", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
-{ nombre: "Matemática I", código: "5531", créditos: 3, semestre: 1, tipo: "ciclo", prelación: [] },
-
-{ nombre: "Contabilidad II", código: "5112", créditos: 5, semestre: 2, tipo: "ciclo", prelación: ["5111"] },
-{ nombre: "Metodología I", código: "5362", créditos: 2, semestre: 2, tipo: "ciclo", prelación: ["5371"] },
-{ nombre: "Teoría Económica II", código: "5422", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5421"] },
-{ nombre: "Historia Económica de Venezuela", código: "5442", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5441"] },
-{ nombre: "Matemática II", código: "5532", créditos: 3, semestre: 2, tipo: "ciclo", prelación: ["5531"] },
-
-{ nombre: "Contabilidad III", código: "5113", créditos: 5, semestre: 3, tipo: "ciclo", prelación: ["5112"] },
-{ nombre: "Metodología II", código: "5363", créditos: 2, semestre: 3, tipo: "ciclo", prelación: ["5362"] },
-{ nombre: "Geografía Económica General", código: "5423", créditos: 4, semestre: 3, tipo: "ciclo", prelación: ["5422"] },
-{ nombre: "Matemática III", código: "5533", créditos: 3, semestre: 3, tipo: "ciclo", prelación: ["5532"] },
-{ nombre: "Derecho Civil", código: "5653", créditos: 4, semestre: 3, tipo: "ciclo", prelación: [] },
-
-{ nombre: "Contabilidad IV", código: "5114", créditos: 5, semestre: 4, tipo: "ciclo", prelación: ["5113"] },
-{ nombre: "Administración I", código: "5224", créditos: 4, semestre: 4, tipo: "ciclo", prelación: [] },
-{ nombre: "Geografía Económica de Venezuela", código: "5424", créditos: 4, semestre: 4, tipo: "ciclo", prelación: ["5423"] },
-{ nombre: "Matemática IV", código: "5534", créditos: 3, semestre: 4, tipo: "ciclo", prelación: ["5533"] },
-{ nombre: "Derecho Mercantil", código: "5654", créditos: 4, semestre: 4, tipo: "ciclo", prelación: ["5653"] },
-        // 🟨 ADMINISTRACIÓN
-{ nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
-{ nombre: "Desarrollo Económico I", código: "5425", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5424"] },
-{ nombre: "Estadística I", código: "5535", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5533"] },
-{ nombre: "Derecho del Trabajo", código: "5655", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5653"] },
-{ nombre: "Sociología", código: "5255", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5423"] },
-
-{ nombre: "Administración III", código: "5226", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5225"] },
-{ nombre: "Desarrollo Económico II", código: "5426", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5425"] },
-{ nombre: "Estadística II", código: "5536", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5535"] },
-{ nombre: "Fundamentos de Derecho Público", código: "5656", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5653"] },
-{ nombre: "Tecnología de la Información I", código: "5566", créditos: 2, semestre: 6, tipo: "admin", prelación: [] },
-
-{ nombre: "Sistemas de Costos Industriales", código: "5217", créditos: 3, semestre: 7, tipo: "admin", prelación: ["5114", "5226"] },
-{ nombre: "Administración de Personal", código: "5227", créditos: 4, semestre: 7, tipo: "admin", prelación: ["5226"] },
-{ nombre: "Investigación de Operaciones", código: "5537", créditos: 4, semestre: 7, tipo: "admin", prelación: ["5533"] },
-{ nombre: "Tecnología de la Información II", código: "5567", créditos: 4, semestre: 7, tipo: "admin", prelación: ["5566"] },
-{ nombre: "Derecho Financiero", código: "5657", créditos: 4, semestre: 7, tipo: "admin", prelación: ["5656"] },
-
-{ nombre: "Análisis de Estados Financieros I", código: "5118", créditos: 4, semestre: 8, tipo: "admin", prelación: ["5114", "5535"] },
-{ nombre: "Sistemas y Procedimientos Administrativos", código: "5218", créditos: 3, semestre: 8, tipo: "admin", prelación: ["5226"] },
-{ nombre: "Mercado y Publicidad I", código: "5238", créditos: 4, semestre: 8, tipo: "admin", prelación: ["5426", "5217"] },
-{ nombre: "Seminario I", código: "5078", créditos: 2, semestre: 8, tipo: "admin", prelación: ["5363"] },
-
-{ nombre: "Análisis de Estados Financieros II", código: "5119", créditos: 4, semestre: 9, tipo: "admin", prelación: ["5118"] },
-{ nombre: "Presupuesto I", código: "5149", créditos: 4, semestre: 9, tipo: "admin", prelación: ["5217"] },
-{ nombre: "Administración de la Producción", código: "5229", créditos: 4, semestre: 9, tipo: "admin", prelación: ["5217", "5537"] },
-{ nombre: "Mercado y Publicidad II", código: "5239", créditos: 4, semestre: 9, tipo: "admin", prelación: ["5238"] },
-{ nombre: "Seminario II", código: "5079", créditos: 2, semestre: 9, tipo: "admin", prelación: ["5078"] },
-{ nombre: "Electiva I", código: "5209", créditos: 3, semestre: 9, tipo: "admin", prelación: [] },
-{ nombre: "Pasantía", código: "5289", créditos: 3, semestre: 9, tipo: "admin", prelación: [] },
-
-{ nombre: "Presupuesto II", código: "5160", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5149"] },
-{ nombre: "Administración Pública", código: "5220", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5226", "5656"] },
-{ nombre: "Planificación Microeconómica", código: "5440", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5229"] },
-{ nombre: "Administración Financiera", código: "5250", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5534", "5537"] },
-{ nombre: "Electiva II", código: "5260", créditos: 4, semestre: 10, tipo: "admin", prelación: [] }
-        // 🟥 CONTADURÍA
-{ nombre: "Taller de Contabilidad", código: "5115", créditos: 2, semestre: 5, tipo: "cont", prelación: ["5114"] },
-{ nombre: "Desarrollo Económico I", código: "5425", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5424"] },
-{ nombre: "Estadística I", código: "5535", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5533"] },
-{ nombre: "Derecho del Trabajo", código: "5655", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5653"] },
-{ nombre: "Sociología", código: "5255", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5423"] },
-
-{ nombre: "Contabilidad Superior I", código: "5116", créditos: 4, semestre: 6, tipo: "cont", prelación: ["5115"] },
-{ nombre: "Desarrollo Económico II", código: "5426", créditos: 4, semestre: 6, tipo: "cont", prelación: ["5425"] },
-{ nombre: "Estadística II", código: "5536", créditos: 4, semestre: 6, tipo: "cont", prelación: ["5535"] },
-{ nombre: "Fundamentos de Derecho Público", código: "5656", créditos: 4, semestre: 6, tipo: "cont", prelación: ["5653"] },
-{ nombre: "Tecnología de la Información I", código: "5566", créditos: 2, semestre: 6, tipo: "cont", prelación: [] },
-
-{ nombre: "Contabilidad Superior II", código: "5117", créditos: 4, semestre: 7, tipo: "cont", prelación: ["5116"] },
-{ nombre: "Sistemas y Procedimientos Contables", código: "5127", créditos: 4, semestre: 7, tipo: "cont", prelación: ["5115"] },
-{ nombre: "Tecnología de la Información II", código: "5567", créditos: 4, semestre: 7, tipo: "cont", prelación: ["5566"] },
-{ nombre: "Derecho Financiero", código: "5657", créditos: 4, semestre: 7, tipo: "cont", prelación: ["5656"] },
-
-{ nombre: "Análisis de Estados Financieros I", código: "5118", créditos: 4, semestre: 8, tipo: "cont", prelación: ["5114", "5535"] },
-{ nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] },
-{ nombre: "Contabilidad de Costos I", código: "5138", créditos: 4, semestre: 8, tipo: "cont", prelación: ["5115"] },
-{ nombre: "Impuesto sobre la Renta", código: "5658", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5657"] },
-{ nombre: "Seminario I", código: "5078", créditos: 2, semestre: 8, tipo: "cont", prelación: ["5363"] },
-
-{ nombre: "Análisis de Estados Financieros II", código: "5119", créditos: 4, semestre: 9, tipo: "cont", prelación: ["5118"] },
-{ nombre: "Auditoría II", código: "5129", créditos: 3, semestre: 9, tipo: "cont", prelación: ["5128"] },
-{ nombre: "Contabilidad de Costos II", código: "5139", créditos: 4, semestre: 9, tipo: "cont", prelación: ["5138"] },
-{ nombre: "Presupuesto I", código: "5149", créditos: 4, semestre: 9, tipo: "cont", prelación: ["5138"] },
-{ nombre: "Seminario II", código: "5079", créditos: 2, semestre: 9, tipo: "cont", prelación: ["5078"] },
-{ nombre: "Electiva I", código: "5109", créditos: 3, semestre: 9, tipo: "cont", prelación: [] },
-{ nombre: "Pasantía", código: "5189", créditos: 3, semestre: 9, tipo: "cont", prelación: [] },
-
-{ nombre: "Auditoría III", código: "5130", créditos: 3, semestre: 10, tipo: "cont", prelación: ["5129"] },
-{ nombre: "Contabilidad Especializada", código: "5140", créditos: 3, semestre: 10, tipo: "cont", prelación: ["5117"] },
-{ nombre: "Contabilidad Gubernamental", código: "5150", créditos: 3, semestre: 10, tipo: "cont", prelación: ["5115", "5657"] },
-{ nombre: "Presupuesto II", código: "5160", créditos: 4, semestre: 10, tipo: "cont", prelación: ["5149"] },
-{ nombre: "Contabilidad de Costos III", código: "5170", créditos: 4, semestre: 10, tipo: "cont", prelación: ["5139"] } ];
+        // Pega aquí todos los bloques: ciclo, admin, contaduría
+        { nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
+        { nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
+        { nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] }
+        // Agrega el resto aquí...
+      ];
 
       let creditosAprobados = 0;
 
@@ -211,11 +63,7 @@
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.addEventListener("change", function () {
-          if (checkbox.checked) {
-            creditosAprobados += materia.créditos;
-          } else {
-            creditosAprobados -= materia.créditos;
-          }
+          creditosAprobados += checkbox.checked ? materia.créditos : -materia.créditos;
           actualizarCreditos();
         });
 
