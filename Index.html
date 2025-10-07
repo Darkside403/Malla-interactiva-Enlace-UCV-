@@ -6,6 +6,7 @@
   <style>
     body { font-family: Arial; margin: 0; padding: 0; background: #fff; color: #0074D9; }
     header { text-align: center; padding: 20px; }
+    header img { height: 80px; margin-bottom: 10px; }
     h1 { color: #FFD700; margin: 0; }
     .seccion { background: #f0f8ff; padding: 10px; margin-top: 30px; border-left: 5px solid #0074D9; }
     .materia { border: 2px solid #0074D9; padding: 10px; margin: 10px; border-radius: 8px; background: #fff; display: flex; justify-content: space-between; align-items: center; }
@@ -17,73 +18,3 @@
 </head>
 <body>
   <header>
-    <h1>Pensum Interactivo - Administración y Contaduría</h1>
-  </header>
-
-  <div id="creditos" class="barra-creditos">Créditos aprobados: 0</div>
-
-  <h2 class="seccion">Ciclo Básico</h2>
-  <div id="ciclo-basico"></div>
-
-  <h2 class="seccion">Especialidad Administración</h2>
-  <div id="administracion"></div>
-
-  <h2 class="seccion">Especialidad Contaduría</h2>
-  <div id="contaduria"></div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const materias = [
-        // 🟦 CICLO BÁSICO
-        { nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Técnicas de Investigación y Documentación", código: "5371", créditos: 2, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Teoría Económica I", código: "5421", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Historia Económica General", código: "5441", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Matemática I", código: "5531", créditos: 3, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Contabilidad II", código: "5112", créditos: 5, semestre: 2, tipo: "ciclo", prelación: ["5111"] },
-        { nombre: "Metodología I", código: "5362", créditos: 2, semestre: 2, tipo: "ciclo", prelación: ["5371"] },
-        { nombre: "Teoría Económica II", código: "5422", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5421"] },
-        { nombre: "Historia Económica de Venezuela", código: "5442", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5441"] },
-        { nombre: "Matemática II", código: "5532", créditos: 3, semestre: 2, tipo: "ciclo", prelación: ["5531"] },
-        { nombre: "Contabilidad III", código: "5113", créditos: 5, semestre: 3, tipo: "ciclo", prelación: ["5112"] },
-        { nombre: "Metodología II", código: "5363", créditos: 2, semestre: 3, tipo: "ciclo", prelación: ["5362"] },
-        { nombre: "Geografía Económica General", código: "5423", créditos: 4, semestre: 3, tipo: "ciclo", prelación: ["5422"] },
-        { nombre: "Matemática III", código: "5533", créditos: 3, semestre: 3, tipo: "ciclo", prelación: ["5532"] },
-        { nombre: "Derecho Civil", código: "5653", créditos: 4, semestre: 3, tipo: "ciclo", prelación: [] },
-        { nombre: "Contabilidad IV", código: "5114", créditos: 5, semestre: 4, tipo: "ciclo", prelación: ["5113"] },
-        { nombre: "Administración I", código: "5224", créditos: 4, semestre: 4, tipo: "ciclo", prelación: [] },
-        { nombre: "Geografía Económica de Venezuela", código: "5424", créditos: 4, semestre: 4, tipo: "ciclo", prelación: ["5423"] },
-        { nombre: "Matemática IV", código: "5534", créditos: 3, semestre: 4, tipo: "ciclo", prelación: ["5533"] },
-        { nombre: "Derecho Mercantil", código: "5654", créditos: 4, semestre: 4, tipo: "ciclo", prelación: ["5653"] },
-
-        // 🟨 ADMINISTRACIÓN
-        { nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
-        { nombre: "Desarrollo Económico I", código: "5425", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5424"] },
-        { nombre: "Estadística I", código: "5535", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5533"] },
-        { nombre: "Derecho del Trabajo", código: "5655", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5653"] },
-        { nombre: "Sociología", código: "5255", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5423"] },
-        { nombre: "Administración III", código: "5226", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5225"] },
-        { nombre: "Desarrollo Económico II", código: "5426", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5425"] },
-        { nombre: "Estadística II", código: "5536", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5535"] },
-        { nombre: "Fundamentos de Derecho Público", código: "5656", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5653"] },
-        { nombre: "Tecnología de la Información I", código: "5566", créditos: 2, semestre: 6, tipo: "admin", prelación: [] },
-
-        // 🟥 CONTADURÍA
-        { nombre: "Taller de Contabilidad", código: "5115", créditos: 2, semestre: 5, tipo: "cont", prelación: ["5114"] },
-        { nombre: "Desarrollo Económico I", código: "5425", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5424"] },
-        { nombre: "Estadística I", código: "5535", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5533"] },
-        { nombre: "Derecho del Trabajo", código: "5655", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5653"] },
-        { nombre: "Sociología", código: "5255", créditos: 4, semestre: 5, tipo: "cont", prelación: ["5423"] }
-      ];
-
-      let creditosAprobados = 0;
-
-      function actualizarCreditos() {
-        document.getElementById("creditos").textContent = `Créditos aprobados: ${creditosAprobados}`;
-      }
-
-      function crearElementoMateria(materia) {
-        const div = document.createElement("div");
-        div.className = "materia";
-
-        const info = document.createElement("div
