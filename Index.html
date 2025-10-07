@@ -36,7 +36,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const materias = [
-  // 🟦 CICLO BÁSICO
+    // 🟦 CICLO BÁSICO
   { nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
   { nombre: "Técnicas de Investigación y Documentación", código: "5371", créditos: 2, semestre: 1, tipo: "ciclo", prelación: [] },
   { nombre: "Teoría Económica I", código: "5421", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
@@ -95,7 +95,17 @@
 
   { nombre: "Presupuesto II", código: "5160", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5149"] },
   { nombre: "Administración Pública", código: "5220", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5226", "5656"] },
-  { nombre: "Planificación Microeconómica", código: "5440", créditos: 4, semestre: 10, tipo: "admin", prel
+  { nombre: "Planificación Microeconómica", código: "5440", créditos: 4, semestre: 10, tipo: "admin", prel},
+
+        // 🟨 ADMINISTRACIÓN
+        { nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
+        { nombre: "Desarrollo Económico I", código: "5425", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5424"] },
+        { nombre: "Estadística I", código: "5535", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5533"] },
+
+        // 🟥 CONTADURÍA
+        { nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] }
+      ];
+
       let creditosAprobados = 0;
 
       function actualizarCreditos() {
