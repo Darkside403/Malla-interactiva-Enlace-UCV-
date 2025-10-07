@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Pensum Enlace UCV</title>
+  <title>Pensum Interactivo - Administración y Contaduría</title>
   <style>
     body {
       background-color: white;
@@ -17,25 +17,45 @@
       padding: 20px;
     }
 
-    .materia {
-      border: 1px solid #0074D9;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 6px;
-      background-color: #f9f9f9;
+    header img {
+      height: 80px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      color: #FFD700;
+      margin: 0;
     }
 
     .seccion {
+      background-color: #f0f8ff;
       padding: 10px;
       margin-top: 30px;
       border-left: 5px solid #0074D9;
-      background-color: #f0f8ff;
+    }
+
+    .materia {
+      border: 2px solid #0074D9;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .semestre {
+      margin-bottom: 20px;
+    }
+
+    .semestre h3 {
+      margin: 10px 0;
+      color: #0074D9;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="IMG-20250817-WA0027.png" alt="Logo Enlace UCV" style="height: 80px;">
+    <img src="IMG-20250817-WA0027.png" alt="Logo Enlace UCV">
     <h1>Pensum Interactivo - Administración y Contaduría</h1>
   </header>
 
@@ -50,43 +70,4 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const materias = [
-        { nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
-        { nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] }
-      ];
-
-      function crearElementoMateria(materia) {
-        const div = document.createElement("div");
-        div.className = "materia";
-        div.innerHTML = `
-          <strong>${materia.nombre}</strong><br>
-          Código: ${materia.código}<br>
-          Créditos: ${materia.créditos}<br>
-          Semestre: ${materia.semestre}
-        `;
-        return div;
-      }
-
-      function renderizarMaterias() {
-        const cicloBasico = document.getElementById("ciclo-basico");
-        const administracion = document.getElementById("administracion");
-        const contaduria = document.getElementById("contaduria");
-
-        materias.forEach((materia) => {
-          const elemento = crearElementoMateria(materia);
-          if (materia.tipo === "ciclo") {
-            cicloBasico.appendChild(elemento);
-          } else if (materia.tipo === "admin") {
-            administracion.appendChild(elemento);
-          } else if (materia.tipo === "cont") {
-            contaduria.appendChild(elemento);
-          }
-        });
-      }
-
-      renderizarMaterias();
-    });
-  </script>
-</body>
-</html>
+      const
