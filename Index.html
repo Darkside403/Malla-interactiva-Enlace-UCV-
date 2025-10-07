@@ -18,3 +18,106 @@
 </head>
 <body>
   <header>
+    <img src="IMG-20250817-WA0027.png" alt="Logo Enlace UCV">
+    <h1>Pensum Interactivo - Administración y Contaduría</h1>
+  </header>
+
+  <div id="creditos" class="barra-creditos">Créditos aprobados: 0</div>
+
+  <h2 class="seccion">Ciclo Básico</h2>
+  <div id="ciclo-basico"></div>
+
+  <h2 class="seccion">Especialidad Administración</h2>
+  <div id="administracion"></div>
+
+  <h2 class="seccion">Especialidad Contaduría</h2>
+  <div id="contaduria"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const materias = [
+        // 🟦 CICLO BÁSICO
+        { nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
+        { nombre: "Técnicas de Investigación y Documentación", código: "5371", créditos: 2, semestre: 1, tipo: "ciclo", prelación: [] },
+        { nombre: "Teoría Económica I", código: "5421", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
+        { nombre: "Historia Económica General", código: "5441", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
+        { nombre: "Matemática I", código: "5531", créditos: 3, semestre: 1, tipo: "ciclo", prelación: [] },
+        { nombre: "Contabilidad II", código: "5112", créditos: 5, semestre: 2, tipo: "ciclo", prelación: ["5111"] },
+        { nombre: "Metodología I", código: "5362", créditos: 2, semestre: 2, tipo: "ciclo", prelación: ["5371"] },
+        { nombre: "Teoría Económica II", código: "5422", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5421"] },
+        { nombre: "Historia Económica de Venezuela", código: "5442", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5441"] },
+        { nombre: "Matemática II", código: "5532", créditos: 3, semestre: 2, tipo: "ciclo", prelación: ["5531"] },
+
+        // 🟨 ADMINISTRACIÓN
+        { nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
+        { nombre: "Desarrollo Económico I", código: "5425", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5424"] },
+        { nombre: "Estadística I", código: "5535", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5533"] },
+
+        // 🟥 CONTADURÍA
+        { nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] }
+      ];
+
+      let creditosAprobados = 0;
+
+      function actualizarCreditos() {
+        document.getElementById("creditos").textContent = `Créditos aprobados: ${creditosAprobados}`;
+      }
+
+      function crearElementoMateria(materia) {
+        const div = document.createElement("div");
+        div.className = "materia";
+
+        const info = document.createElement("div");
+        info.className = "materia-info";
+        info.innerHTML = `
+          <strong>${materia.nombre}</strong><br>
+          Código: ${materia.código}<br>
+          Créditos: ${materia.créditos}<br>
+          Semestre: ${materia.semestre}
+        `;
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.addEventListener("change", function () {
+          creditosAprobados += checkbox.checked ? materia.créditos : -materia.créditos;
+          actualizarCreditos();
+        });
+
+        div.appendChild(info);
+        div.appendChild(checkbox);
+        return div;
+      }
+
+      function agruparPorSemestre(materiasFiltradas) {
+        const agrupadas = {};
+        materiasFiltradas.forEach(m => {
+          if (!agrupadas[m.semestre]) agrupadas[m.semestre] = [];
+          agrupadas[m.semestre].push(m);
+        });
+        return agrupadas;
+      }
+
+      function renderizarSeccion(tipo, contenedorId) {
+        const contenedor = document.getElementById(contenedorId);
+        const materiasFiltradas = materias.filter(m => m.tipo === tipo);
+        const agrupadas = agruparPorSemestre(materiasFiltradas);
+
+        Object.keys(agrupadas).sort((a, b) => a - b).forEach(semestre => {
+          const bloque = document.createElement("div");
+          bloque.className = "semestre";
+          bloque.innerHTML = `<h3>Semestre ${semestre}</h3>`;
+          agrupadas[semestre].forEach(materia => {
+            bloque.appendChild(crearElementoMateria(materia));
+          });
+          contenedor.appendChild(bloque);
+        });
+      }
+
+      renderizarSeccion("ciclo", "ciclo-basico");
+      renderizarSeccion("admin", "administracion");
+      renderizarSeccion("cont", "contaduria");
+      actualizarCreditos();
+    });
+  </script>
+</body>
+</html>
