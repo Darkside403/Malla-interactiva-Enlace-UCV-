@@ -1,5 +1,8 @@
 const materias = [
-  // ... (todo tu array de materias completo aquí, sin cambios)
+  { nombre: "Contabilidad I", semestre: 1, créditos: 5, código: "5111", prelación: [], tipo: "ciclo" },
+  { nombre: "Administración II", semestre: 5, créditos: 4, código: "5225", prelación: ["5224"], tipo: "admin" },
+  { nombre: "Auditoría I", semestre: 5, créditos: 4, código: "5305", prelación: ["5114"], tipo: "cont" },
+  // Puedes seguir agregando todas las demás materias aquí...
 ];
 
 // 🔧 Renderizado dinámico de la malla
