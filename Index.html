@@ -37,25 +37,34 @@
     document.addEventListener("DOMContentLoaded", function () {
       const materias = [
         // 🟦 CICLO BÁSICO
-        { nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Técnicas de Investigación y Documentación", código: "5371", créditos: 2, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Teoría Económica I", código: "5421", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Historia Económica General", código: "5441", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Matemática I", código: "5531", créditos: 3, semestre: 1, tipo: "ciclo", prelación: [] },
-        { nombre: "Contabilidad II", código: "5112", créditos: 5, semestre: 2, tipo: "ciclo", prelación: ["5111"] },
-        { nombre: "Metodología I", código: "5362", créditos: 2, semestre: 2, tipo: "ciclo", prelación: ["5371"] },
-        { nombre: "Teoría Económica II", código: "5422", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5421"] },
-        { nombre: "Historia Económica de Venezuela", código: "5442", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5441"] },
-        { nombre: "Matemática II", código: "5532", créditos: 3, semestre: 2, tipo: "ciclo", prelación: ["5531"] },
+{ nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
+{ nombre: "Matemática I", código: "5531", créditos: 3, semestre: 1, tipo: "ciclo", prelación: [] },
+{ nombre: "Teoría de la Investigación y Documentación", código: "5371", créditos: 2, semestre: 1, tipo: "ciclo", prelación: [] },
+{ nombre: "Administración I", código: "5224", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
+{ nombre: "Teoría Económica I", código: "5421", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
+{ nombre: "Historia Económica General", código: "5441", créditos: 4, semestre: 1, tipo: "ciclo", prelación: [] },
 
+{ nombre: "Contabilidad II", código: "5112", créditos: 5, semestre: 2, tipo: "ciclo", prelación: ["5111"] },
+{ nombre: "Matemática II", código: "5532", créditos: 3, semestre: 2, tipo: "ciclo", prelación: ["5531"] },
+{ nombre: "Estadística I", código: "5535", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5531"] },
+{ nombre: "Administración II", código: "5225", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5224"] },
+{ nombre: "Teoría Económica II", código: "5422", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5421"] },
+{ nombre: "Historia Económica de Venezuela", código: "5442", créditos: 4, semestre: 2, tipo: "ciclo", prelación: ["5441"] },
         // 🟨 ADMINISTRACIÓN
-        { nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
-        { nombre: "Desarrollo Económico I", código: "5425", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5424"] },
-        { nombre: "Estadística I", código: "5535", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5533"] },
+{ nombre: "Administración III", código: "5226", créditos: 4, semestre: 3, tipo: "admin", prelación: ["5225"] },
+{ nombre: "Administración IV", código: "5227", créditos: 4, semestre: 4, tipo: "admin", prelación: ["5226"] },
+{ nombre: "Administración V", código: "5228", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5227"] },
+{ nombre: "Administración VI", código: "5229", créditos: 4, semestre: 6, tipo: "admin", prelación: ["5228"] },
+{ nombre: "Administración VII", código: "5230", créditos: 4, semestre: 7, tipo: "admin", prelación: ["5229"] },
+{ nombre: "Administración VIII", código: "5231", créditos: 4, semestre: 8, tipo: "admin", prelación: ["5230"] },
 
-        // 🟥 CONTADURÍA
-        { nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] }
-      ];
+      // 🟥 CONTADURÍA
+{ nombre: "Contabilidad III", código: "5113", créditos: 5, semestre: 3, tipo: "cont", prelación: ["5112"] },
+{ nombre: "Contabilidad IV", código: "5114", créditos: 5, semestre: 4, tipo: "cont", prelación: ["5113"] },
+{ nombre: "Taller de Contabilidad", código: "5115", créditos: 2, semestre: 5, tipo: "cont", prelación: ["5114"] },
+{ nombre: "Contabilidad Superior I", código: "5116", créditos: 4, semestre: 6, tipo: "cont", prelación: ["5115"] },
+{ nombre: "Contabilidad Superior II", código: "5117", créditos: 4, semestre: 7, tipo: "cont", prelación: ["5116"] },
+{ nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] },];
 
       let creditosAprobados = 0;
 
