@@ -1,11 +1,9 @@
 body {
   background-color: white;
-  background-image: url('IMG-20250817-WA0027.png');
-  background-repeat: repeat;
-  background-size: 200px;
-  background-position: center;
   font-family: Arial, sans-serif;
   color: #0074D9;
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -14,8 +12,14 @@ header {
   background-color: white;
 }
 
+header img {
+  height: 80px;
+  margin-bottom: 10px;
+}
+
 h1 {
   color: #FFD700;
+  margin: 0;
 }
 
 .seccion {
