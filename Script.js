@@ -58,4 +58,11 @@ const materias = [
 
   { nombre: "Presupuesto II", semestre: 10, créditos: 4, código: "5160", prelación: ["5149"], tipo: "admin" },
   { nombre: "Administración Pública", semestre: 10, créditos: 4, código: "5220", prelación: ["5226", "5656"], tipo: "admin" },
-  { nombre: "Planificación Microeconómica", semestre:
+  { nombre: "Planificación Microeconómica", semestre: 10, créditos: 4, código: "5420", prelación: ["5426"], tipo: "admin" }
+];
+
+// 🔧 Renderizado dinámico de la malla
+function crearElementoMateria(materia) {
+  const div = document.createElement("div");
+  div.className = "materia";
+  div.inner
