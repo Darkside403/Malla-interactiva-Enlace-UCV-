@@ -59,3 +59,40 @@ const materias = [
   { nombre: "Presupuesto II", código: "5160", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5149"] },
   { nombre: "Administración Pública", código: "5220", créditos: 4, semestre: 10, tipo: "admin", prelación: ["5226", "5656"] },
   { nombre: "
+
+   const materias = [
+  { nombre: "Contabilidad I", código: "5111", créditos: 5, semestre: 1, tipo: "ciclo", prelación: [] },
+  { nombre: "Administración II", código: "5225", créditos: 4, semestre: 5, tipo: "admin", prelación: ["5224"] },
+  { nombre: "Auditoría I", código: "5128", créditos: 3, semestre: 8, tipo: "cont", prelación: ["5115"] }
+];
+
+function crearElementoMateria(materia) {
+  const div = document.createElement("div");
+  div.className = "materia";
+  div.innerHTML = `
+    <strong>${materia.nombre}</strong><br>
+    Código: ${materia.código}<br>
+    Créditos: ${materia.créditos}<br>
+    Semestre: ${materia.semestre}
+  `;
+  return div;
+}
+
+function renderizarMaterias() {
+  const cicloBasico = document.getElementById("ciclo-basico");
+  const administracion = document.getElementById("administracion");
+  const contaduria = document.getElementById("contaduria");
+
+  materias.forEach((materia) => {
+    const elemento = crearElementoMateria(materia);
+    if (materia.tipo === "ciclo") {
+      cicloBasico.appendChild(elemento);
+    } else if (materia.tipo === "admin") {
+      administracion.appendChild(elemento);
+    } else if (materia.tipo === "cont") {
+      contaduria.appendChild(elemento);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", renderizarMaterias);
