@@ -1,0 +1,35 @@
+body {
+  background-color: white;
+  background-image: url('logo-enlace-ucv.png');
+  background-repeat: repeat;
+  background-size: 200px;
+  background-position: center;
+  opacity: 0.95;
+  font-family: Arial, sans-serif;
+  color: #0074D9;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+}
+
+h1 {
+  color: #FFD700;
+}
+
+#malla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.materia {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #0074D9;
+  padding: 10px;
+  border-radius: 8px;
+  color: #000000;
+}
