@@ -1,11 +1,30 @@
 const materias = [
-  { nombre: "Contabilidad I", semestre: 1, créditos: 5, código: "5111", prelación: [], tipo: "ciclo" },
-  { nombre: "Administración II", semestre: 5, créditos: 4, código: "5225", prelación: ["5224"], tipo: "admin" },
-  { nombre: "Auditoría I", semestre: 5, créditos: 4, código: "5305", prelación: ["5114"], tipo: "cont" },
-  // Puedes seguir agregando todas las demás materias aquí...
+  // Aquí va tu array completo de materias (ya lo tienes bien definido)
 ];
 
-// 🔧 Renderizado dinámico de la malla
+// 🔧 Agrupar materias por tipo y semestre
+function agruparMateriasPorTipo() {
+  const agrupadas = {
+    ciclo: {},
+    admin: {},
+    cont: {}
+  };
+
+  materias.forEach((materia) => {
+    const tipo = materia.tipo;
+    const semestre = materia.semestre;
+
+    if (!agrupadas[tipo][semestre]) {
+      agrupadas[tipo][semestre] = [];
+    }
+
+    agrupadas[tipo][semestre].push(materia);
+  });
+
+  return agrupadas;
+}
+
+// 🔧 Crear HTML para cada materia
 function crearElementoMateria(materia) {
   const div = document.createElement("div");
   div.className = "materia";
@@ -18,21 +37,32 @@ function crearElementoMateria(materia) {
   return div;
 }
 
+// 🔧 Renderizar materias en el DOM
 function renderizarMaterias() {
+  const agrupadas = agruparMateriasPorTipo();
+
   const cicloBasico = document.getElementById("ciclo-basico");
   const administracion = document.getElementById("administracion");
   const contaduria = document.getElementById("contaduria");
 
-  materias.forEach((materia) => {
-    const elemento = crearElementoMateria(materia);
-    if (materia.tipo === "ciclo") {
-      cicloBasico.appendChild(elemento);
-    } else if (materia.tipo === "admin") {
-      administracion.appendChild(elemento);
-    } else if (materia.tipo === "cont") {
-      contaduria.appendChild(elemento);
-    }
-  });
+  function renderizarSeccion(contenedor, materiasPorSemestre) {
+    Object.keys(materiasPorSemestre).sort((a, b) => a - b).forEach((semestre) => {
+      const grupo = document.createElement("div");
+      grupo.className = "semestre";
+      grupo.innerHTML = `<h3>Semestre ${semestre}</h3>`;
+
+      materiasPorSemestre[semestre].forEach((materia) => {
+        const elemento = crearElementoMateria(materia);
+        grupo.appendChild(elemento);
+      });
+
+      contenedor.appendChild(grupo);
+    });
+  }
+
+  renderizarSeccion(cicloBasico, agrupadas.ciclo);
+  renderizarSeccion(administracion, agrupadas.admin);
+  renderizarSeccion(contaduria, agrupadas.cont);
 }
 
 document.addEventListener("DOMContentLoaded", renderizarMaterias);
